@@ -1,0 +1,81 @@
+@hostname = http://localhost:4000/api/v1
+#@hostname = https://demo-smatera.bellyeah.jp/api/v1
+# @hostname = https://hxh-api.cyclic.cloud/api/v1
+
+@endpoint = /auth
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkyOTQ3MDEzLCJleHAiOjE2OTMwMzM0MTN9.LolZ_thPTIyNM8mPrup39SzdycMmzGmqBRgIx5c2pjY
+
+### LOGIN USER
+POST {{hostname}}{{endpoint}}/login
+content-type: application/json
+Authorization: {{token}}
+
+# {
+# 	"email": "dev@gmail.com",
+# 	"password": "password"
+# }
+
+{
+	"email": "ez@mil.com",
+	"password": "admin"
+}
+
+### GET SELF
+GET {{hostname}}{{endpoint}}/self
+Authorization: {{token}}
+
+### REGISTER USER
+POST {{hostname}}{{endpoint}}/register
+content-type: application/json
+Authorization: {{token}}
+
+{
+	"email": "ez@mil.com",
+	"password": "password",
+	"first_name": "ez mil",
+	"last_name": "k tea",
+	"password_confirm": "password"
+}
+
+### UPDATE SELF
+PATCH {{hostname}}{{endpoint}}/self_update
+content-type: application/json
+Authorization: {{token}}
+
+{
+	"last_name": "Ez t"
+}
+
+### UPDATE PASSWORD
+PATCH {{hostname}}{{endpoint}}/update_password
+content-type: application/json
+Authorization: {{token}}
+
+{
+
+	"password": "password",
+	"password_confirm": "password",
+	"new_password": "password"
+}
+
+### FORGOT PASSWORD
+# this request emails the user with the token and link to reset the password 
+# use the token to reset the password via api request
+POST {{hostname}}{{endpoint}}/forgot_password
+content-type: application/json
+Authorization: {{token}}
+
+{
+	"email": "ez@mil.com"
+}
+
+
+### RESET PASSWORD
+PATCH {{hostname}}{{endpoint}}/reset_password/d85e235ea433a81fef1496f8e2fc152eb7f109632a039cc4d6ab099ea49e7c1b
+content-type: application/json
+Authorization: {{token}}
+
+{
+	"password": "password",
+	"password_confirm": "password"
+}
