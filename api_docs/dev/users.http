@@ -15,7 +15,7 @@ content-type: application/json
 Authorization: {{token}}
 
 ### GET SINGLE RESOURCE
-GET {{hostname}}{{endpoint}}/1
+GET {{hostname}}{{endpoint}}/5
 content-type: application/json
 Authorization: {{token}}
 
@@ -27,10 +27,10 @@ Authorization: {{token}}
 {
    "first_name": "DEV",
    "last_name": "DEV_2",
-   "email": "dev3@gmail.com",
+   "email": "dev5@gmail.com",
    "password": "password",
    "role": "admin",
-   "image": 5
+   "images": [5]
 }
 
 ### UPDATE RESOURCE

@@ -13,6 +13,7 @@ class UserController extends BaseController {
 			'first_name',
 			'last_name',
 			'email',
+			'images',
 		);
 
 		const BaseService = new this.BaseService();

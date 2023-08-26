@@ -11,7 +11,9 @@ process.on('uncaughtException', (err) => {
 });
 
 (async () => {
-	await db.sequelize.sync();
+	if (process.env.NODE_ENV === 'development') {
+		await db.sequelize.sync();
+	}
 
 	const port = process.env.PORT || 5000;
 	const server = app.listen(port, () => {

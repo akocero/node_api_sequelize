@@ -6,9 +6,6 @@
 
 const SequelizeQueryBuilder = require('../utils/SequelizeQueryBuilder.js');
 const PaginationHelper = require('../helpers/PaginationHelper.js');
-const ImageAssocHelper = require('../helpers/ImageAssocHelper.js');
-const { Image } = require('../models');
-const db = require('../models');
 
 class BaseService {
 	static className = 'BaseService';
@@ -16,7 +13,6 @@ class BaseService {
 		this.Model = Model;
 		this.SequelizeQueryBuilder = SequelizeQueryBuilder;
 		this.PagnationHelper = PaginationHelper;
-		this.ImageAssocHelper = ImageAssocHelper;
 	}
 
 	/**

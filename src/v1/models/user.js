@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
 		 * The `models/index` file will call this method automatically.
 		 */
 		static associate(models) {
+			// put this code if you want to enable the image uploading
 			this.belongsToMany(models.Image, {
 				through: {
 					model: models.ImageAssociation,

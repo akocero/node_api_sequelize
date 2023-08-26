@@ -12,10 +12,18 @@ class UserService extends BaseService {
 			{
 				model: Image,
 				as: 'images',
-				attributes: ['id', 'public_id', 'secure_url'],
+				attributes: [
+					'id',
+					'public_id',
+					'secure_url',
+					'width',
+					'height',
+				],
 				through: { attributes: [] },
 			},
 		];
+
+		this.has_images = true;
 	}
 }
 

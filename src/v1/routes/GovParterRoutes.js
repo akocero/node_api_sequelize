@@ -35,7 +35,6 @@ router.post(
 	`${prefix}`,
 	express.json(),
 	auth.protect,
-	upload.single('file'),
 	catchUnknownError(MainController.create.bind(MainController)),
 );
 
