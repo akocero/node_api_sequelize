@@ -6,6 +6,9 @@
 
 const SequelizeQueryBuilder = require('../utils/SequelizeQueryBuilder.js');
 const PaginationHelper = require('../helpers/PaginationHelper.js');
+const ImageAssocHelper = require('../helpers/ImageAssocHelper.js');
+const { Image } = require('../models');
+const db = require('../models');
 
 class BaseService {
 	static className = 'BaseService';
@@ -13,25 +16,7 @@ class BaseService {
 		this.Model = Model;
 		this.SequelizeQueryBuilder = SequelizeQueryBuilder;
 		this.PagnationHelper = PaginationHelper;
-	}
-
-	/**
-	 * execute the query and check if it has a relation
-	 * @param {*} id
-	 * @returns boolean
-	 */
-	async execute(query) {
-		let data;
-
-		// if (this.with_relation) {
-		// 	data = await query.populate(this.relations);
-		// } else {
-		// 	data = await query;
-		// }
-
-		data = await query;
-
-		return data;
+		this.ImageAssocHelper = ImageAssocHelper;
 	}
 
 	/**
@@ -40,14 +25,14 @@ class BaseService {
 	 * @returns rows
 	 */
 	async readAll() {
-		const query = this.Model.findAll();
-		const data = await this.execute(query);
-
-		return query;
+		const data = await this.Model.findAll({
+			include: this.include,
+		});
+		return data;
 	}
 
 	/**
-	 * Reads all the entries in the table
+	 * Reads all the entries in the table with filters and pagination
 	 * Returns an array of models
 	 * @returns rows
 	 */
@@ -59,8 +44,7 @@ class BaseService {
 			.limitFields()
 			.paginate();
 
-		data = await query.getResults();
-		// data = await this.execute(query.query);
+		data = await query.getResults(this.include);
 
 		if (queryString.page) {
 			const pagination_helper = new this.PagnationHelper(
@@ -76,14 +60,16 @@ class BaseService {
 	}
 
 	/**
-	 * Returns the newly inserted row (ARRAY) if successful
+	 * Returns the newly inserted row if successful
 	 * @param {*} modelObject
 	 * @returns
 	 */
 	async create(payload) {
-		const data = await this.Model.create({
-			...payload,
-		});
+		const data = await this.Model.create(payload);
+
+		if (this.has_images && payload.images) {
+			await data.addImages(payload.images);
+		}
 
 		return data;
 	}
@@ -94,13 +80,12 @@ class BaseService {
 	 * @returns Array of rows or null
 	 */
 	async readById(id) {
-		const query = await this.Model.findOne({
+		const data = await this.Model.findOne({
 			where: {
 				id,
 			},
+			include: this.include,
 		});
-
-		const data = await this.execute(query);
 
 		if (!data) {
 			return false;
@@ -122,15 +107,19 @@ class BaseService {
 			return false;
 		}
 
-		const query = user.update(payload);
-
-		const data = await this.execute(query);
+		const data = await user.update(payload);
 
 		if (!data) {
 			return false;
 		}
 
-		return data;
+		if (this.has_images && payload.images) {
+			await data.setImages(payload.images);
+		}
+
+		const updatedData = await this.readById(id);
+
+		return updatedData;
 	}
 
 	/**
@@ -138,14 +127,7 @@ class BaseService {
 	 * @param {*} id
 	 * @returns boolean
 	 */
-	async delete(id) {
-		const data = await this.Model.findByIdAndDelete(id);
-
-		if (!data) {
-			return false;
-		}
-		return true;
-	}
+	async delete(id) {}
 }
 
 module.exports = BaseService;

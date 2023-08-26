@@ -25,6 +25,10 @@ class BaseController {
 
 		const data = await BaseService.create(req.body);
 
+		if (!data) {
+			return next(new AppError('Failed to create resource', 403));
+		}
+
 		const statusCode = 200;
 		res.status(statusCode).json(
 			jsonResponse(statusCode, 'Resource created successfully.', data),

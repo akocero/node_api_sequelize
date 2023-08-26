@@ -6,8 +6,8 @@ const { jsonResponse } = require('../utils/responseBuilder');
 class UserController extends BaseController {
 	async update(req, res, next) {
 		const id = req.params.id;
-		const BaseService = new this.BaseService();
 
+		// filter req.body to prevent updating sensitve data
 		const filteredBody = filterObject(
 			req.body,
 			'first_name',
@@ -15,6 +15,7 @@ class UserController extends BaseController {
 			'email',
 		);
 
+		const BaseService = new this.BaseService();
 		const data = await BaseService.update(id, filteredBody);
 
 		if (!data) {

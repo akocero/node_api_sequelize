@@ -1,4 +1,4 @@
-const { User: Model } = require('../models');
+const { User: Model, Image } = require('../models');
 const BaseService = require('./BaseService');
 
 class UserService extends BaseService {
@@ -8,8 +8,14 @@ class UserService extends BaseService {
 		super(Model);
 
 		this.Model = Model;
-		this.with_relation = false;
-		this.relations = {};
+		this.include = [
+			{
+				model: Image,
+				as: 'images',
+				attributes: ['id', 'public_id', 'secure_url'],
+				through: { attributes: [] },
+			},
+		];
 	}
 }
 

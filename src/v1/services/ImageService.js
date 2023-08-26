@@ -8,8 +8,7 @@ class CustomerService extends BaseService {
 		super(Model);
 
 		this.Model = Model;
-		this.with_relation = false;
-		this.relations = {};
+		this.include = [];
 	}
 }
 

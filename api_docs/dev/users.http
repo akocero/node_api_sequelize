@@ -2,7 +2,7 @@
 #@hostname = https://demo-smatera.bellyeah.jp/api/v1
 #@hostname = https://hxh-api.cyclic.cloud/api/v1
 @endpoint = /users
-@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkyOTQ3MDEzLCJleHAiOjE2OTMwMzM0MTN9.LolZ_thPTIyNM8mPrup39SzdycMmzGmqBRgIx5c2pjY
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDQ1MDczLCJleHAiOjE2OTMxMzE0NzN9.kmM5FVdDJm8H25Bh6dOKdAhaNpUraXjAsFVk1bEYH3U
 
 ### GET ALL RESOURCE
 GET {{hostname}}{{endpoint}}
@@ -15,7 +15,7 @@ content-type: application/json
 Authorization: {{token}}
 
 ### GET SINGLE RESOURCE
-GET {{hostname}}{{endpoint}}/7
+GET {{hostname}}{{endpoint}}/1
 content-type: application/json
 Authorization: {{token}}
 
@@ -27,9 +27,10 @@ Authorization: {{token}}
 {
    "first_name": "DEV",
    "last_name": "DEV_2",
-   "email": "dev@gmail.com",
-   "role": "super",
-   "password": "password"
+   "email": "dev3@gmail.com",
+   "password": "password",
+   "role": "admin",
+   "image": 5
 }
 
 ### UPDATE RESOURCE
@@ -38,21 +39,10 @@ content-type: application/json
 Authorization: {{token}}
 
 {
-      "name": "chrollo lucilfer",
-      "also_known_as": [
-        "Boss","Phantom Troupe Member #0"
-      ],
-      "gender": "male",
-      "nen_type": [
-        "Specialization"
-      ],
-      "abilities": ["Indoor Fish (Stolen)","Fun Fun Cloth (Stolen)","Teleportation (Stolen)","Black Voice (Stolen)","The Sun and Moon (Stolen)","Order Stamp (Stolen)","Gallery Fake (Stolen)","Convert Hands (Stolen)","Lovely Ghostwriter (Stolen; Former)","Double Face"],
-      "japanese_name": "クロロ゠ルシルフル",
-      "groups": ["64d88505f5d42e977fffa4fb"],
-      "professions": [
-        "thieve","Leader of the Phantom","Phantom Troupe Member #0","Floor Master","Red Cleaner (acting role)"
-      ],
-      "state": "alive"
+   "first_name": "DEV",
+   "last_name": "DEV_2",
+   "email": "dev2@gmail.com",
+   "role": "admin"
 }
 
 ###

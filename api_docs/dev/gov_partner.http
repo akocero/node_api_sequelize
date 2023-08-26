@@ -1,38 +1,54 @@
 @hostname = http://localhost:4000/api/v1
 #@hostname = https://demo-smatera.bellyeah.jp/api/v1
-@endpoint = /images
+#@hostname = https://hxh-api.cyclic.cloud/api/v1
+@endpoint = /government_partners
 @token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDQ1MDczLCJleHAiOjE2OTMxMzE0NzN9.kmM5FVdDJm8H25Bh6dOKdAhaNpUraXjAsFVk1bEYH3U
+
+### GET ALL RESOURCE
 GET {{hostname}}{{endpoint}}
 content-type: application/json
 Authorization: {{token}}
-###
 
-GET {{hostname}}{{endpoint}}/6411c4dbf8e48cb5b3b1546f
+### GET RESOURCE WITH FILTERS AND PAGINATION
+GET {{hostname}}{{endpoint}}?page=1&limit=2
 content-type: application/json
 Authorization: {{token}}
 
-###
+### GET SINGLE RESOURCE
+GET {{hostname}}{{endpoint}}/7
+content-type: application/json
+Authorization: {{token}}
+
+### ADD/STORE RESOURCE
 POST {{hostname}}{{endpoint}}
 content-type: application/json
 Authorization: {{token}}
 
 {
-    "file": "092"
+   "title": "GOV_5",
+   "images": [1,2,3]
 }
 
-###
-PATCH {{hostname}}{{endpoint}}/6401f24b3c3d5cb4e6303ff0
+### UPDATE RESOURCE
+PATCH {{hostname}}{{endpoint}}/7
 content-type: application/json
 Authorization: {{token}}
 
 {
-    "mobileNumber": "09233",
-    "email": "email@gmail3.com",
-    "lastName": "Mil",
-    "firstName": "Ez"
+   "title": "GOV_UPDATED_3",
+   "images": [1]
 }
 
 ###
+PATCH {{hostname}}{{endpoint}}/7                   
+content-type: application/json
+Authorization: {{token}}
+
+{
+  "first_name": "eugene"
+}
+
+### DELETE RESOURCE
 DELETE {{hostname}}{{endpoint}}/6401f24b3c3d5cb4e6303ff0
 content-type: application/json
 Authorization: {{token}}

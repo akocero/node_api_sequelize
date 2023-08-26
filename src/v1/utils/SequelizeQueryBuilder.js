@@ -53,12 +53,13 @@ class SequelizeQueryBuilder {
 		return this;
 	}
 
-	async getResults() {
+	async getResults(include = []) {
 		const results = await this.model.findAll({
 			where: this.filterOptions,
 			attributes: this.attributesOptions,
 			order: this.orderOptions,
 			...this.paginationOptions,
+			include: include,
 		});
 		return results;
 	}

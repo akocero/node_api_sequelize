@@ -3,7 +3,7 @@
 # @hostname = https://hxh-api.cyclic.cloud/api/v1
 
 @endpoint = /auth
-@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkyOTQ3MDEzLCJleHAiOjE2OTMwMzM0MTN9.LolZ_thPTIyNM8mPrup39SzdycMmzGmqBRgIx5c2pjY
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDE1NjU0LCJleHAiOjE2OTMxMDIwNTR9.KFeEhsveYzEUdDnHD140hT7iz0oXywq-ZOjMIrRq0hw
 
 ### LOGIN USER
 POST {{hostname}}{{endpoint}}/login
@@ -17,7 +17,7 @@ Authorization: {{token}}
 
 {
 	"email": "ez@mil.com",
-	"password": "admin"
+	"password": "password"
 }
 
 ### GET SELF
@@ -43,7 +43,7 @@ content-type: application/json
 Authorization: {{token}}
 
 {
-	"last_name": "Ez t"
+	"last_name": "llion"
 }
 
 ### UPDATE PASSWORD
@@ -71,7 +71,7 @@ Authorization: {{token}}
 
 
 ### RESET PASSWORD
-PATCH {{hostname}}{{endpoint}}/reset_password/d85e235ea433a81fef1496f8e2fc152eb7f109632a039cc4d6ab099ea49e7c1b
+PATCH {{hostname}}{{endpoint}}/reset_password/876da6e1dd79aa036230bf58e61bac10f40c550b0ab1761afdff01d7065ed1c8
 content-type: application/json
 Authorization: {{token}}
 

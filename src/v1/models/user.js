@@ -10,7 +10,18 @@ module.exports = (sequelize, DataTypes) => {
 		 * The `models/index` file will call this method automatically.
 		 */
 		static associate(models) {
-			// define association here
+			this.belongsToMany(models.Image, {
+				through: {
+					model: models.ImageAssociation,
+					unique: false,
+					scope: {
+						owner_type: 'User',
+					},
+				},
+				foreignKey: 'owner_id',
+				constraints: false,
+				as: 'images',
+			});
 		}
 
 		async comparePassword(candidatePassword, userPassword) {
@@ -95,8 +106,8 @@ module.exports = (sequelize, DataTypes) => {
 		},
 
 		{
-			underscored: true,
 			sequelize,
+			underscored: true,
 			modelName: 'User',
 			indexes: [{ unique: true, fields: ['email'] }],
 			defaultScope: {

@@ -4,12 +4,12 @@ const { jsonResponse } = require('../utils/responseBuilder');
 const cloudinary = require('../../../config/cloudinary.js');
 
 class ImageController extends BaseController {
-	async create(req, res) {
+	async create(req, res, next) {
 		if (!req.file) {
 			return next(new AppError('File is required', 404));
 		}
-		const BaseService = new this.BaseService();
 
+		const BaseService = new this.BaseService();
 		const image_res = await cloudinary.uploader.upload(req.file.path, {
 			upload_preset:
 				process.env.CLOUDINARY_IMAGE_PRESET || 'development_preset',
