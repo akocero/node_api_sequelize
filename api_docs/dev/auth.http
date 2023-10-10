@@ -3,7 +3,7 @@
 # @hostname = https://hxh-api.cyclic.cloud/api/v1
 
 @endpoint = /auth
-@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDE1NjU0LCJleHAiOjE2OTMxMDIwNTR9.KFeEhsveYzEUdDnHD140hT7iz0oXywq-ZOjMIrRq0hw
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjk2ODU0NTMxLCJleHAiOjE2OTY5NDA5MzF9.vh9GJxG2yFeRSWsDQLmuyUMtUuR9P0dkh4Il6xj24No
 
 ### LOGIN USER
 POST {{hostname}}{{endpoint}}/login

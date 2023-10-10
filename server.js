@@ -12,7 +12,10 @@ process.on('uncaughtException', (err) => {
 
 (async () => {
 	if (process.env.NODE_ENV === 'development') {
-		await db.sequelize.sync();
+		// await db.User.sync({ alter: true });
+		// await db.Image.sync({ alter: true });
+		// await db.ImageAssociation.sync({ alter: true });
+		// await db.GovPartner.sync({ alter: true });
 	}
 
 	const port = process.env.PORT || 5000;

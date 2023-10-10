@@ -1,8 +1,7 @@
 @hostname = http://localhost:4000/api/v1
 #@hostname = https://demo-smatera.bellyeah.jp/api/v1
-#@hostname = https://hxh-api.cyclic.cloud/api/v1
 @endpoint = /government_partners
-@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDQ1MDczLCJleHAiOjE2OTMxMzE0NzN9.kmM5FVdDJm8H25Bh6dOKdAhaNpUraXjAsFVk1bEYH3U
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjk2ODU0NTMxLCJleHAiOjE2OTY5NDA5MzF9.vh9GJxG2yFeRSWsDQLmuyUMtUuR9P0dkh4Il6xj24No
 
 ### GET ALL RESOURCE
 GET {{hostname}}{{endpoint}}
